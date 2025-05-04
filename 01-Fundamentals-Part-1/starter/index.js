@@ -10,3 +10,11 @@ continent = "Africa";
 population = 200_000_000;
 
 console.log(country, continent, population);
+
+const DATEOFBIRTH = 1991;
+
+DATEOFBIRTH = 1992; // This will throw an error because we are trying to reassign a constant variable
+
+const yearNow = 2027;
+const ageRaphael = yearNow - DATEOFBIRTH;
+console.log(age);
