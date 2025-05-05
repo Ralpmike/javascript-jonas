@@ -13,8 +13,19 @@ console.log(country, continent, population);
 
 const DATEOFBIRTH = 1991;
 
-DATEOFBIRTH = 1992; // This will throw an error because we are trying to reassign a constant variable
+// DATEOFBIRTH = 1992;
+// This will throw an error because we are trying to reassign a constant variable
 
 const yearNow = 2027;
 const ageRaphael = yearNow - DATEOFBIRTH;
-console.log(age);
+console.log(ageRaphael);
+
+const firstName = "Raphael ";
+const lastName = "Ogunyemi";
+console.log(firstName + lastName); // Concatenation
+
+const birthYear = "1991";
+
+console.log(Number(birthYear)); // This will convert the string to a number and add 18, resulting in 2009
+
+console.log(birthYear + 18); // This will concatenate the string and the number, resulting in "199118"
