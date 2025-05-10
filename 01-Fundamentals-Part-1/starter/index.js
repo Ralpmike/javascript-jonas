@@ -29,3 +29,11 @@ const birthYear = "1991";
 console.log(Number(birthYear)); // This will convert the string to a number and add 18, resulting in 2009
 
 console.log(birthYear + 18); // This will concatenate the string and the number, resulting in "199118"
+
+let height = 119;
+
+if (height) {
+  console.log("YAY! Height is defined");
+} else {
+  console.log("Height is UNDEFINED");
+}
