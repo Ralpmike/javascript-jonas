@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script defer src="script.js"></script>
+  <title>Developer Skills & Editor Setup</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(to top left, #28b487, #7dd56f);
+    }
+
+    h1 {
+      font-family: sans-serif;
+      font-size: 50px;
+      line-height: 1.3;
+      width: 100%;
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-size: 2.5rem;
+    }
+
+    button#click-me {
+      background-color: #fff;
+      border: none;
+      border-radius: 5px;
+      color: #28b487;
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    :modal {
+      background-color: hsla(25, 75%, 47%, .5);
+      backdrop-filter: blur(5px);
+      border-radius: 5px;
+      padding: 20px;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+
+
+    body {
+      font-family: sans-serif;
+
+    }
+
+    .item {
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 0.3rem 0.8rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    dialog {
+      border: none;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      background: #fff;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Developer Skills & Editor Setup</h1>
+  <!-- <h2>lets</h2> -->
+  <div>
+
+    <h2>click to see a random number</h2>
+    <button id="click-me">Click Me</button>
+
+
+    <dialog id="show-dialog">
+      <h2>Random Number</h2>
+      <form method="dialog">
+        <p id="random-number">Random Number: <strong id="random-number-value"></strong></p>
+        <button>Close</button>
+      </form>
+    </dialog>
+  </div>
+
+
+  <div class="dialog-practice">
+    <h2>Items</h2>
+
+    <div class="item" data-id="1" data-name="Report.docx">
+      📄 Report.docx <button class="deleteBtn">Delete</button>
+    </div>
+    <div class="item" data-id="2" data-name="Photo.png">
+      🖼️ Photo.png <button class="deleteBtn">Delete</button>
+    </div>
+    <div class="item" data-id="3" data-name="Invoice.pdf">
+      🧾 Invoice.pdf <button class="deleteBtn">Delete</button>
+    </div>
+
+    <!-- Shared Confirmation Dialog -->
+    <dialog id="confirmDialog">
+      <p>Are you sure you want to delete <strong id="itemName"></strong>?</p>
+      <button id="confirmYes">Yes</button>
+      <button id="confirmNo">No</button>
+    </dialog>
+  </div>
+
+</body>
+
+</html>
