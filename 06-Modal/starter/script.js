@@ -1,30 +1,48 @@
 'use strict';
 
 const modal = document.querySelector('.modal');
-const overLay = document.querySelector('.overlay');
+const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
-const btnsShowModal = document.querySelectorAll('.show-modal');
-console.log(btnsShowModal);
+const btnsOpenModal = document.querySelectorAll('.show-modal');
 
-function closeModal() {
+// for (let i = 0; i < btnsOpenModal.length; i++) {
+//   btnsOpenModal[i].addEventListener('click', () => {
+//     console.log(`Hello World! ${btnsOpenModal[i].textContent}`);
+//     modal.style.display = 'block';
+//     overlay.style.display = 'block';
+//   });
+// }
+
+// btnCloseModal.addEventListener('click', function () {
+//   modal.style.display = 'none';
+//   overlay.style.display = 'none';
+// });
+
+// overlay.addEventListener('click', function () {
+//   modal.style.display = 'none';
+//   overlay.style.display = 'none';
+// });
+const closeModal = function () {
   modal.classList.add('hidden');
-  overLay.classList.add('hidden');
-}
+  overlay.classList.add('hidden');
+};
 
-function openModal() {
+const openModal = function () {
   modal.classList.remove('hidden');
-  overLay.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+for (let i = 0; i < btnsOpenModal.length; i++) {
+  btnsOpenModal[i].addEventListener('click', openModal);
 }
 
-for (let index = 0; index < btnsShowModal.length; index++) {
-  btnsShowModal[index].addEventListener('click', openModal);
-}
 btnCloseModal.addEventListener('click', closeModal);
-overLay.addEventListener('click', closeModal);
+
+overlay.addEventListener('click', closeModal);
 
 document.addEventListener('keydown', function (e) {
-  console.log(e.key);
-  if (e.key === 'Escape') {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    console.log('Escape was pressed');
     closeModal();
   }
 });
