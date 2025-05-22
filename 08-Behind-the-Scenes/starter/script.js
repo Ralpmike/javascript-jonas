@@ -48,3 +48,49 @@ const profile = {
 };
 
 profile.calcAge();
+
+try {
+  console.log('Instance of Error');
+  console.log(x);
+} catch (error) {
+  console.log('Error message', error.name);
+  console.error({ error });
+}
+
+// console.log(this);
+
+// function calcAge(birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// }
+
+const peter = {
+  name: 'Peter',
+  year: 1996,
+  evaluateAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+
+peter.evaluateAge();
+
+// ? the Argument keyword
+
+const addExpr = function (a, b) {
+  console.log('regular function', arguments);
+  return a + b;
+};
+
+addExpr(2, 5);
+
+const addArrow = (a, b) => {
+  try {
+    console.log('arrow function', arguments);
+    return a + b;
+  } catch (error) {
+    console.log('Error:', error.message);
+    // console.error({ error });
+  }
+};
+addArrow(2, 5);
