@@ -94,3 +94,36 @@ const addArrow = (a, b) => {
   }
 };
 addArrow(2, 5);
+
+//?Memory Management: the Stack and the Heap memory -- primitive and reference types(objects)
+
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  job: 'teacher',
+  friends: ['Michael', 'Steven', 'Peter'],
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage: ', marriedJessica);
+
+//? Copying objects
+
+//*shallow copy
+const jessicaCopy = { ...jessica }; //?the spread does a shallow copy
+
+jessicaCopy.lastName = 'Smith';
+// console.log('Before marriage:', jessica);
+// console.log('After marriage: ', jessicaCopy);
+
+jessicaCopy.friends.push('Bob');
+jessicaCopy.friends.push('Alice');
+console.log('Before marriage:', jessica);
+console.log('After marriage: ', jessicaCopy);
+//? Object.assign() method
+
+//?Deep copy
+const jessicaDeepCopy = structuredClone(jessica);
