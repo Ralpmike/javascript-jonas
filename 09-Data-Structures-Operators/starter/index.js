@@ -34,6 +34,12 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
+    );
+  },
 };
 
 restaurant.orderDelivery({
@@ -108,3 +114,50 @@ const {
   fri: { open: o, close: c },
 } = openingHours; // destructuring the 'fri' property from 'openingHours'
 console.log(o, c); // { open: 11, close: 23 }
+
+//* Spread operator example
+//? The spread operator is used to unpack elements from an array or properties from an object.
+//*Spread operator is used to merge arrays or objects
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]]; // This creates a nested array
+const newArr = [1, 2, ...arr];
+
+console.log(badNewArr);
+console.log(newArr); // [1, 2, 7, 8, 9]
+
+const newMenu = [...restaurant.mainMenu, 'Gnocchi'];
+
+//? Copying arrays
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy); // ['Pizza', 'Pasta', 'Risotto']
+const menuCombined = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menuCombined); // ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad', 'Pizza', 'Pasta', 'Risotto', 'Gnocchi']
+
+//?iterables: arrays, strings, maps, sets
+const str = 'Raphael';
+const letters = [...str, ' ', 'S.'];
+console.log(letters); // ['R', 'a', 'p', 'h', 'a', 'e', 'l', ' ', 'S.']
+
+console.log(...str);
+
+const ingredients = [
+  // prompt("Let's make pasta! Ingredient 1?"),
+  // prompt('Ingredient 2?'),
+  // prompt('Ingredient 3?'),
+];
+
+console.log(ingredients);
+
+restaurant.orderPasta(...ingredients); // Here we spread the ingredients array into the function call
+
+//? Objects
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Giuseppe' };
+console.log(newRestaurant);
+
+//?copying objects using spread operator
+
+const restaurantCopy = { ...restaurant };
+console.log(restaurantCopy);
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name); // Ristorante Roma
+console.log(restaurant.name); // Classico Italiano
