@@ -281,3 +281,90 @@ for (const [day, { open, close }] of entries) {
 // rest1.owner &&= 'Anonymous'; // rest1.owner is undefined, so it remains undefined
 // rest2.owner &&= 'Anonymous'; // rest2.owner is 'Giovanni Rossi', so it gets assigned 'Anonymous'
 // console.log(rest1, rest2); // rest1.owner remains undefined, rest2.owner becomes 'Anonymous'
+
+//?Set data structure
+// const ordersSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+// ]);
+// console.log(ordersSet);
+
+// let size = ordersSet.size;
+// console.log(size); // 4, because 'Pizza' and 'Pasta' are duplicates and only counted once
+// console.log(ordersSet.has('Pizza')); // true
+
+// let newSet = ordersSet.add('Garlic Bread');
+
+const italianFoods = new Set([
+  'pasta',
+  'gnocchi',
+  'tomatoes',
+  'olive oil',
+  'garlic',
+  'basil',
+  'avocado',
+]);
+
+const mexicanFoods = new Set([
+  'tacos',
+  'tomatoes',
+  'beans',
+  'garlic',
+  'rice',
+  'tortillas',
+  'avocado',
+]);
+
+//?Intersection: The intersection method returns a new Set containing the values that are present in both sets.
+const commonFoods = italianFoods.intersection(mexicanFoods);
+
+console.log('intersection', commonFoods); // Set { 'tomatoes', 'garlic' }
+
+console.log([...commonFoods]);
+
+//?Union: The union method returns a new Set containing all the values from both sets.
+
+const italianMexicanFoods = italianFoods.union(mexicanFoods);
+
+console.log('union', italianMexicanFoods);
+
+//?Difference: The difference method returns a new Set containing the values that are present in the first set but not in the second set.
+const mexicanFoodsOnly = mexicanFoods.difference(italianFoods);
+
+// console.log('mexicanFoods:', [...mexicanFoods]);
+// console.log('italianFoods:', [...italianFoods]);
+// console.log('mexicanFoodsOnly', mexicanFoodsOnly);
+
+//*symmetricDifference: The symmetricDifference method returns a new Set containing the values that are present in either set, but not in both sets.
+
+const mexicanFoodsOnly2 = mexicanFoods.symmetricDifference(italianFoods);
+// console.log('mexicanFoods:', [...mexicanFoods]);
+// console.log('italianFoods:', [...italianFoods]);
+// console.log('mexicanFoodsOnly2', [...mexicanFoodsOnly2]);
+
+//! Map data structure: a collection of key-value pairs
+
+const rest = new Map();
+
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+
+rest.set(2, 'Lisbon, Portugal');
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open!')
+  .set(false, 'We are closed!');
+
+console.log(rest.get('name')); // Classico Italiano
+console.log(rest.get(true)); // We are open!
+
+const time = 9;
+
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // We are open!
