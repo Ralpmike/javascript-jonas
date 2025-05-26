@@ -40,6 +40,11 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
 restaurant.orderDelivery({
@@ -161,3 +166,50 @@ console.log(restaurantCopy);
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name); // Ristorante Roma
 console.log(restaurant.name); // Classico Italiano
+
+//? Rest operator
+
+//? The rest operator is used to collect multiple elements into an array.
+const arr2 = [1, 2, ...[3, 4]]; // Spread operator
+const [x, y, ...others] = [1, 2, 3, 4, 5]; // Rest operator
+console.log(x, y, others); // 1, 2, [3, 4, 5]
+
+//? Destructuring with rest operator
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+//? Rest operator in object destructuring
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat, weekdays);
+
+//? Rest operator in function parameters
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+//? short circuiting with logical operators
+console.log('--- OR ---');
+//*OR(||) operator looks for the first truthy value
+console.log(3 || 'Raphael'); // 3
+
+//?falsy values: 0, '', undefined, null, NaN
+
+console.log('--- AND ---');
+
+//*AND(&&) operator looks for the first falsy value
+console.log('' && 'Raphael'); // ''
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+console.log('--- Nullish Coalescing Operator ---');
