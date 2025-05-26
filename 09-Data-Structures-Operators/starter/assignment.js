@@ -344,3 +344,8 @@ const result =
   (team1 > team2 && 'team one is most likely to win') ||
   (team2 > team1 && 'Team 2 is most likely to win');
 console.log(result);
+
+//* For of loop
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${player}`);
+}
