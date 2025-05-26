@@ -221,3 +221,40 @@ console.log(guests1); // 10
 const guests2 = restaurant.numGuests ?? 10; // 10 because 0 is nullish
 console.log(guests2);
 //*Nullish: null and undefined (Not 0 or '')
+
+//? Logical assignment operators
+
+const rest1 = {
+  name: 'Capri',
+  // numGuests: 20,
+  numGuests: 0, // simulating a case where numGuests is 0
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+//* Logical assignment operators combine logical operators with assignment.
+//? The logical OR assignment operator (||=) assigns a value only if the left-hand side is falsy.
+
+// rest2.numGuests = rest2.numGuests || 10; // 10 because rest2.numGuests is undefined
+// rest1.numGuests = rest1.numGuests || 10;
+
+// rest2.numGuests ||= 10;
+// rest1.numGuests ||= 10;
+
+//* The logical nullish assignment operator (??=) assigns a value only if the left-hand side is null or undefined.
+rest2.numGuests ??= 10; // rest2.numGuests is undefined, so it gets assigned 10
+rest1.numGuests ??= 10; // rest1.numGuests is 0, so it remains 0
+
+// console.log(rest1);
+// console.log(rest2);
+
+//* The logical AND assignment operator (&&=) assigns a value only if the left-hand side is truthy.
+// rest1.owner = rest1.owner && 'Anonymous'; // rest1.owner is undefined, so it remains undefined
+// rest2.owner = rest2.owner && 'Anonymous'; // rest2.owner is 'Giovanni Rossi', so it gets assigned 'Anonymous'
+// console.log(rest1, rest2);
+rest1.owner &&= 'Anonymous'; // rest1.owner is undefined, so it remains undefined
+rest2.owner &&= 'Anonymous'; // rest2.owner is 'Giovanni Rossi', so it gets assigned 'Anonymous'
+console.log(rest1, rest2); // rest1.owner remains undefined, rest2.owner becomes 'Anonymous'
