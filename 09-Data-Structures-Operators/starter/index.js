@@ -213,3 +213,11 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 console.log('--- Nullish Coalescing Operator ---');
+//? The nullish coalescing operator (??) is used to provide a default value when the left-hand side is null or undefined, unlike the OR operator which considers all falsy values.
+
+restaurant.numGuests = 0; // simulating a case where numGuests is 0
+const guests1 = restaurant.numGuests || 10; // 10 because 0 is falsy
+console.log(guests1); // 10
+const guests2 = restaurant.numGuests ?? 10; // 10 because 0 is nullish
+console.log(guests2);
+//*Nullish: null and undefined (Not 0 or '')
