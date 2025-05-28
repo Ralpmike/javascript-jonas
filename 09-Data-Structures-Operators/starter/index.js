@@ -355,6 +355,8 @@ rest.set(1, 'Firenze, Italy');
 
 rest.set(2, 'Lisbon, Portugal');
 
+console.log(rest);
+
 rest
   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
   .set('open', 11)
@@ -368,3 +370,44 @@ console.log(rest.get(true)); // We are open!
 const time = 9;
 
 console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // We are open!
+
+//? operations with Map
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct :D'],
+  [false, 'Try again!'],
+]);
+
+console.log(question);
+
+//* Creating maps from objects
+
+const newMaps = new Map(Object.entries(openingHours));
+// console.log(...newMaps);
+
+//* Maps: Iteration
+
+//?Qusetion
+console.log(question.get('question'));
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = prompt('Your answer');
+console.log(question.get(Number(answer) === question.get('correct')));
+// console.log(asnwer === question.get('correct'));
+
+// const result = answer === true ? question.get(true) : question.get(false);
+// console.log(result);
+
+//? coverting map to array
+console.log([...question]);
+console.log(question.entries());
+console.log(question.keys());
+console.log(question.values());
