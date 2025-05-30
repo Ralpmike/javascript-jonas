@@ -409,7 +409,43 @@ console.log(question.get(Number(answer) === question.get('correct')));
 // console.log(result);
 
 //? coverting map to array
-console.log([...question]);
-console.log(question.entries());
-console.log(question.keys());
-console.log(question.values());
+// console.log([...question]);
+// console.log(question.entries());
+// console.log(question.keys());
+// console.log(question.values());
+
+const airplane = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log('a345'[0]);
+
+//? String methods
+
+console.log(airplane.indexOf('r'));
+console.log(airplane.lastIndexOf('r'));
+
+console.log(airplane.slice(4));
+console.log(airplane.slice(4, 7));
+
+console.log(airplane.slice(0, airplane.indexOf(' ')));
+console.log(airplane.slice(airplane.lastIndexOf(' ') + 1));
+
+console.log(airplane.slice(-2));
+console.log(airplane.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got lucky');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(new String('hello'));
+console.log(typeof new String('hello'));
+
+console.log(typeof new String('hello').slice());
