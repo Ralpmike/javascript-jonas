@@ -96,5 +96,33 @@ const high5 = function () {
   console.log('👋');
 };
 
-document.body.addEventListener('click', high5);
-['Jonas', 'Martha', 'Adam'].forEach(high5);
+// document.body.addEventListener('click', high5);
+// ['Jonas', 'Martha', 'Adam'].forEach(high5);
+
+{
+  //? Closures: Functions returning other functions
+  const greet = function (greeting) {
+    return function (name) {
+      console.log(`${greeting} ${name}`);
+    };
+  };
+
+  const greeterHey = greet('Hey');
+  greeterHey('Jonas');
+  greeterHey('Steven');
+
+  greet('Hello')('Raphael');
+}
+
+//*Challenge
+{
+  // const greet = greeting => {
+  //   return name => {
+  //     console.log(`${greeting} ${name}`);
+  //   };
+  // };
+
+  const greet = greeting => name => console.log(`${greeting} ${name}`);
+
+  greet('Hi')('Michael');
+}
