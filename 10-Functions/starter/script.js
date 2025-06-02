@@ -48,9 +48,9 @@ console.log(junkFoods.at(-1));
     passenger.name = 'Mr. ' + passenger.name;
 
     if (passenger.passport === 24739479284) {
-      alert('Checked in');
+      console.log('Checked in');
     } else {
-      alert('Wrong passport!');
+      console.log('Wrong passport!');
     }
   };
 
@@ -67,3 +67,34 @@ console.log(junkFoods.at(-1));
 
   //? passing by value and passing by reference
 }
+
+//? HOF (Higher Order Functions)
+{
+  const oneWord = function (str) {
+    return str.replace(/ /g, '').toLowerCase();
+  };
+
+  const upperFirstWord = function (str) {
+    const [first, ...others] = str.split(' ');
+    return [first.toUpperCase(), ...others].join(' ');
+  };
+
+  const transformer = function (str, fn) {
+    console.log(`Original string: ${str}`);
+    console.log(`Transformed string: ${fn(str)}`);
+
+    console.log(`Transformed by: ${fn.name}`);
+  };
+
+  transformer('JavaScript is the best!', upperFirstWord);
+  transformer('JavaScript is the best!', oneWord);
+}
+
+'✅', ' 🍉', '🚘';
+
+const high5 = function () {
+  console.log('👋');
+};
+
+document.body.addEventListener('click', high5);
+['Jonas', 'Martha', 'Adam'].forEach(high5);
