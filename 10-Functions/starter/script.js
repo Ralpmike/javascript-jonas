@@ -126,3 +126,53 @@ const high5 = function () {
 
   greet('Hi')('Michael');
 }
+
+{
+  //?Apply and bind and call methods
+  const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    book(flightNum, name) {
+      console.log(
+        `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+      );
+      this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+    },
+  };
+
+  lufthansa.book(239, 'Raphael Michael');
+  lufthansa.book(635, 'Maria Bush');
+  console.log(lufthansa.bookings);
+
+  const eurowings = {
+    airline: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+  };
+
+  const book = lufthansa.book;
+
+  eurowings.book = book;
+
+  //Does not work
+  // book(23, 'Sarah Cooper');
+  book.call(eurowings, 23, 'Sarah Cooper');
+  book.call(lufthansa, 239, 'Mary Johnson');
+  // console.log(eurowings.bookings);
+  // console.log(lufthansa.bookings);
+
+  const swiss = {
+    airline: 'Swiss Air Lines',
+    iataCode: 'LX',
+    bookings: [],
+  };
+
+  book.call(swiss, 583, 'Mary Cooper');
+  // console.log(swiss.bookings);
+
+  const flightData = [583, 'George Cooper'];
+  book.apply(swiss, flightData);
+  // console.log(swiss.bookings);
+  book.call(swiss, ...flightData);
+}
