@@ -224,10 +224,12 @@ const high5 = function () {
   console.log(addVAT2(150));
   console.log(addVAT2(50));
 }
-//? Challenge #2
-// Coding Challenge #1
 
-/* 
+{
+  //? Challenge #2
+  // Coding Challenge #1
+
+  /* 
 Let's build a simple poll app!
 
 A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter object below.
@@ -258,44 +260,56 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section 😃
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    const answer = prompt(
-      `${this.question}\n${this.options.join('\n')}\n(Write option number)`
-    ); // What is your favourite
+  const poll = {
+    question: 'What is your favourite programming language?',
+    options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+    // This generates [0, 0, 0, 0]. More in the next section 😃
+    answers: new Array(4).fill(0),
+    registerNewAnswer() {
+      const answer = prompt(
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+      ); // What is your favourite
 
-    if (!answer || answer.length > 1 || isNaN(Number(answer))) {
-      alert('Enter a valid option');
-    } else if (Number(answer) <= 3 && Number(answer) >= 0) {
-      const answerTypeChange = +answer;
-      this.answers[answerTypeChange]++;
-    } else {
-      alert('Choose from the options listed!');
-    }
+      if (!answer || answer.length > 1 || isNaN(Number(answer))) {
+        alert('Enter a valid option');
+      } else if (Number(answer) <= 3 && Number(answer) >= 0) {
+        const answerTypeChange = +answer;
+        this.answers[answerTypeChange]++;
+      } else {
+        alert('Choose from the options listed!');
+      }
 
-    // console.log('answer:', this.answers);
-    this.displayResults();
-  },
+      // console.log('answer:', this.answers);
+      this.displayResults();
+    },
 
-  displayResults(type = 'array') {
-    return type === 'string'
-      ? console.log(this.answers.join(', '))
-      : console.log(this.answers);
-  },
-};
+    displayResults(type = 'array') {
+      return type === 'string'
+        ? console.log(this.answers.join(', '))
+        : console.log(this.answers);
+    },
+  };
 
-// poll.registerNewAnswer();
+  // poll.registerNewAnswer();
 
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+  document
+    .querySelector('.poll')
+    .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-const testData1 = { answers: [5, 2, 3] };
-const testData2 = [1, 5, 3, 9, 6, 1];
-const displayResult = poll.displayResults.bind(testData1, 'string');
-console.log(displayResult());
-// displayResult(testData1, 'string');
+  const testData1 = { answers: [5, 2, 3] };
+  const testData2 = [1, 5, 3, 9, 6, 1];
+  const displayResult = poll.displayResults.bind(testData1, 'string');
+  console.log(displayResult());
+  // displayResult(testData1, 'string');
+}
+
+{
+  //?IIFE
+  const runOnce = function () {
+    console.log('This will never run again');
+  };
+  runOnce();
+  (function () {
+    console.log('This will never run again 1');
+  })();
+}
