@@ -313,3 +313,33 @@ GOOD LUCK 😀
     console.log('This will never run again 1');
   })();
 }
+
+//?Closures: In simple terms, a JavaScript closure is when a function "remembers" the variables from its outer scope, even after the outer function has finished running. This happens when a function is defined inside another function, and the inner function keeps access to the outer function's variables.
+
+/**?
+ *? How It Works:
+
+*?Imagine you have a function (the outer one) that contains another function (the inner one).
+
+*?The inner function can use variables from the outer function.
+
+*?Even if the outer function finishes executing, the inner function still "closes over" or remembers those variables and can use them later.
+
+**/
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
