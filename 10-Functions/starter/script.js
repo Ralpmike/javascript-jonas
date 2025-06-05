@@ -143,7 +143,7 @@ const high5 = function () {
 
   lufthansa.book(239, 'Raphael Michael');
   lufthansa.book(635, 'Maria Bush');
-  console.log(lufthansa.bookings);
+  // console.log(lufthansa.bookings);
 
   const eurowings = {
     airline: 'Eurowings',
@@ -159,6 +159,8 @@ const high5 = function () {
   // book(23, 'Sarah Cooper');
   book.call(eurowings, 23, 'Sarah Cooper');
   book.call(lufthansa, 239, 'Mary Johnson');
+  console.log(eurowings);
+  console.log(lufthansa);
   // console.log(eurowings.bookings);
   // console.log(lufthansa.bookings);
 
@@ -170,9 +172,13 @@ const high5 = function () {
 
   book.call(swiss, 583, 'Mary Cooper');
   // console.log(swiss.bookings);
-
+  //? Apply method
   const flightData = [583, 'George Cooper'];
   book.apply(swiss, flightData);
   // console.log(swiss.bookings);
+
+  //?The modern way to use the apply method is to use the call method with the spread operator
   book.call(swiss, ...flightData);
 }
+
+//? The bind method
