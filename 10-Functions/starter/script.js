@@ -179,6 +179,48 @@ const high5 = function () {
 
   //?The modern way to use the apply method is to use the call method with the spread operator
   book.call(swiss, ...flightData);
-}
 
-//? The bind method
+  //? The bind method
+  const bookEW = book.bind(eurowings);
+  const bookLH = book.bind(lufthansa);
+  const bookLX = book.bind(swiss);
+
+  bookEW(23, 'Steven Williams');
+  bookEW(23, 'James Bond');
+
+  //*Partial application means that a part of the application is already prepared or predefined
+  const bookEW23 = book.bind(eurowings, 23);
+  bookEW23('Raphael Michael');
+  bookEW23('Maria Bush');
+
+  //? with event listeners
+  lufthansa.planes = 300;
+  lufthansa.buyPlane = function () {
+    console.log(this);
+    this.planes++;
+    console.log(this.planes);
+  };
+
+  document
+    .querySelector('.buy')
+    .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+  //? parial application
+
+  const addTax = (rate, value) => value + value * rate;
+  console.log(addTax(0.1, 200));
+
+  const addVAT = addTax.bind(null, 0.23);
+  console.log(addVAT(100));
+  console.log(addVAT(23));
+
+  function addTaxRate(rate) {
+    return function (value) {
+      return value + value * rate;
+    };
+  }
+
+  const addVAT2 = addTaxRate(0.23);
+  console.log(addVAT2(150));
+  console.log(addVAT2(50));
+}
