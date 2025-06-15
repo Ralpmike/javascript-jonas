@@ -199,23 +199,46 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
-function checkDogs(dogsJulia, dogskate) {
-  const dogsJuliaCopy = [...dogsJulia];
-  dogsJuliaCopy.splice(0, 1);
-  dogsJuliaCopy.splice(-2);
-  const combined = [...dogsJuliaCopy, ...dogskate];
-  console.log(combined);
+// function checkDogs(dogsJulia, dogskate) {
+//   const dogsJuliaCopy = [...dogsJulia];
+//   dogsJuliaCopy.splice(0, 1);
+//   dogsJuliaCopy.splice(-2);
+//   const combined = [...dogsJuliaCopy, ...dogskate];
+//   console.log(combined);
 
-  combined.forEach((age, i) => {
-    const adult =
-      age >= 3 ? `an adult, and is ${age} years old` : `still a puppy 🐶`;
+//   combined.forEach((age, i) => {
+//     const adult =
+//       age >= 3 ? `an adult, and is ${age} years old` : `still a puppy 🐶`;
 
-    console.log(`Dog number ${i + 1} is ${adult}`);
-  });
+//     console.log(`Dog number ${i + 1} is ${adult}`);
+//   });
+// }
+
+// let dogsJulia = [3, 5, 2, 12, 7];
+// let dogskate = [4, 1, 15, 8, 3];
+
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
+const euroTousd = 1.1;
+
+const movementsUSD = movements.map(mov => {
+  return mov * euroTousd;
+});
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * euroTousd);
 }
+console.log(movementsUSDfor);
 
-let dogsJulia = [3, 5, 2, 12, 7];
-let dogskate = [4, 1, 15, 8, 3];
-
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescriptions);
