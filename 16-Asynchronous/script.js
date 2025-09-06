@@ -69,28 +69,28 @@ const countriesContainer = document.querySelector('.countries');
 //     countriesContainer.style.opacity = 1;
 //   });
 // }
-// const renderCountry = function (data, className = '') {
-//   const html = `
-//       <article class="country ${className}">
-//             <img class="country__img" src=${data.flag}
-//     }/>
-//             <div class="country__data">
-//               <h3 class="country__name">${data.name}</h3>
-//               <h4 class="country__region">${data.region}</h4>
-//               <p class="country__row"><span>👫</span>${(
-//                 data.population / 1000000
-//               ).toFixed(2)}</p>
-//               <p class="country__row"><span>🗣️</span>${data.languages.eng}</p>
-//               <p class="country__row"><span>💰</span>(${
-//                 data.currencies[0].code
-//               }) ${data.currencies[0].name}</p>
-//             </div>
-//           </article>
-//     `;
+const renderCountry = function (data, className = '') {
+  const html = `
+      <article class="country ${className}">
+            <img class="country__img" src=${data.flag}
+    }/>
+            <div class="country__data">
+              <h3 class="country__name">${data.name}</h3>
+              <h4 class="country__region">${data.region}</h4>
+              <p class="country__row"><span>👫</span>${(
+                data.population / 1000000
+              ).toFixed(2)}</p>
+              <p class="country__row"><span>🗣️</span>${data.languages.eng}</p>
+              <p class="country__row"><span>💰</span>(${
+                data.currencies[0].code
+              }) ${data.currencies[0].name}</p>
+            </div>
+          </article>
+    `;
 
-//   countriesContainer.insertAdjacentHTML('beforeend', html);
-//   countriesContainer.style.opacity = 1;
-// };
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};
 
 // function getCountryAndNeighbourData(country) {
 //   //?AJAX call country 1
@@ -135,6 +135,15 @@ const countriesContainer = document.querySelector('.countries');
 // getCountryData('usa');
 // getCountryAndNeighbourData('portugal');
 
-const request = fetch('https://restcountries.com/v2/name/portugal');
+// const request = fetch('https://restcountries.com/v2/name/portugal');
 
-console.log('request', request);
+// console.log('request', request);
+
+
+const getCountryData = function(country){
+  fetch(`https://restcountries.com/v2/name/${country}`)
+  .then(response => response.json())
+  .then(data => renderCountry(data[0]));
+}
+
+getCountryData('portugal');
