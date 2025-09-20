@@ -77,7 +77,7 @@ const getPosition = function () {
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const whereAmI = async function () {
@@ -103,14 +103,30 @@ const whereAmI = async function () {
     if(!res.ok) throw new Error('Problem getting Country');
     const data = await res.json();
     renderCountry(data[0]);
+
+    return `You are in ${dataGeo.countryName}`
   } catch (error) {
     console.log(`Error: ${error} 💥`);
     renderError(`Something went wrong 💥 ${error.message}`);
-    
+
+    //?reject promise from async function
+    throw error
   }
 };
 
 
-btn.addEventListener('click', function () {
-  whereAmI();
-}); 
+
+//  const result =  whereAmI();
+
+// console.log(result)
+
+(async function(){
+  try {
+   const city = await whereAmI();
+   console.log(`2: ${city}`);
+  } catch (error) {
+    console.log(`2: ${error.message} 💥`);
+  }
+
+  console.log('3: Finished getting location');
+})()
