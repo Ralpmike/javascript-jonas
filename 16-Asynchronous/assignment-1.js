@@ -214,7 +214,12 @@ Promise.all([
 //? Promise.any
 
 Promise.any([
+  Promise.reject('Error'),
   Promise.resolve('Another Success'),
   Promise.resolve('Success'),
-  Promise.reject('Error'),
 ]).then(res => console.log(res)).catch(err => console.error(err));
+
+
+Promise.try(function(){
+    return fetch('https://restcountries.com/v2/name/nigeria');
+  }).then(res => console.log(res.json())).catch(err => console.error(err));    
