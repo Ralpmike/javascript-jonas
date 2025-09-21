@@ -259,12 +259,7 @@ async function loadAll(imgPaths = []){
   } catch (error) {
     console.log(error);
   }
-  // imgPaths.map(imgPath => {
-  //   (async function(){
-  //     const img = await createImage(imgPath)
-  //     img.classList.add('parallel')
-  //   })()
-  // } )
+ 
 }
 
 loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
